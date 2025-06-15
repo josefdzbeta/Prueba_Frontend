@@ -1,1 +1,25 @@
-<p>event-list works!</p>
+<div class="event-grid">
+  <div class="event-card" *ngFor="let event of events$ | async">
+    <a class="event-link" [routerLink]="['/event', event.id]">
+      <img [src]="event.image" [alt]="event.title" />
+      <h3 class="title">{{ event.title }}</h3>
+      <h4 class="subtitle">{{ event.subtitle }}</h4>
+    </a>
+
+    <p class="place">{{ event.place }}</p>
+    <p class="dates">
+      {{ event.startDate | date:'shortDate' }}
+      –
+      {{ event.endDate   | date:'shortDate' }}
+    </p>
+
+    <p class="description">
+      {{ event.description }}
+    </p>
+
+    <button class="action-button"
+            [routerLink]="['/event', event.id]">
+      Comprar
+    </button>
+  </div>
+</div>

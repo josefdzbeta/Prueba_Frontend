@@ -1,0 +1,67 @@
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 1rem;
+
+  .event-link {
+    text-decoration: none;
+    color: inherit;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .subtitle {
+      margin: 0;
+      font-size: 1rem;
+      color: #666;
+    }
+  }
+
+  .place,
+  .dates {
+    margin: 0.4rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .description {
+    display: none;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .action-button {
+    margin-top: auto;
+    padding: 0.5rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
