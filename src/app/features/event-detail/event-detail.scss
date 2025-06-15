@@ -1,0 +1,53 @@
+.detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .sessions,
+  .cart {
+    flex: 1 1 100%;
+  }
+
+  @media (min-width: 768px) {
+    .sessions,
+    .cart {
+      flex: 1 1 50%;
+    }
+  }
+}
+
+.session-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+
+  .controls {
+    display: flex;
+    align-items: center;
+
+    button {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.2rem;
+    }
+
+    .count {
+      margin: 0 0.5rem;
+      min-width: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+.back-button {
+  margin-top: 1rem;
+}
+
+.not-found {
+  color: red;
+  font-weight: bold;
+}

@@ -29,23 +29,29 @@ export class Event {
    * Fetch event details and sessions.
    * event-info.json has a single event object.
    */
-  getEventInfo(): Observable<{ event: EventDetail; sessions: SessionDetail[] }> {
-    return this.http.get<EventInfoResponse>(`${this.base}/event-info.json`).pipe(
+  getEventInfo(eventId: string): Observable<{ event: EventDetail; sessions: SessionDetail[] }> {
+    return this.http.get<EventInfoResponse>(`${this.base}/event-info-${eventId}.json`).pipe(
       map((res) => {
+        const sessions = res.sessions.map((s) => ({
+          date: Number(s.date),
+          availability: Number(s.availability),
+        }));
+
+        const dates = sessions.map((s) => s.date);
+        const startDate = Math.min(...dates);
+        const endDate = Math.max(...dates);
+
         const evt: EventDetail = {
           id: res.event.id,
           title: res.event.title,
           subtitle: res.event.subtitle,
           image: res.event.image,
-          place: '',
-          startDate: 0,
-          endDate: 0,
+          place: '—',
+          startDate: startDate,
+          endDate: endDate,
           description: '',
         };
-        const sessions: SessionDetail[] = res.sessions.map((s) => ({
-          date: Number(s.date),
-          availability: Number(s.availability),
-        }));
+
         return { event: evt, sessions };
       })
     );
