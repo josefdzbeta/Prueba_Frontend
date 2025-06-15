@@ -9,7 +9,7 @@ import { EventInfoResponse } from '../shared/models/event-detail.model';
   providedIn: 'root',
 })
 export class Event {
-  private base = '/assets';
+  private base = 'assets/data';
 
   private http = inject(HttpClient);
 
@@ -40,7 +40,7 @@ export class Event {
           place: '',
           startDate: 0,
           endDate: 0,
-          description: '', 
+          description: '',
         };
         const sessions: SessionDetail[] = res.sessions.map((s) => ({
           date: Number(s.date),
