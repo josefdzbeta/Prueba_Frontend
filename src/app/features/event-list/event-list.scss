@@ -8,7 +8,7 @@
   display: grid;
   gap: 1rem;
   width: 100%;
-  max-width: 900px;
+  width: clamp(320px, 90%, 900px);
   grid-template-columns: 1fr;
 
   @media (min-width: 768px) {
@@ -44,7 +44,7 @@
   }
 
   .dates {
-    margin: 0.4rem 0 0;
+    margin: 0.4rem 0 0.4rem 0;
     font-size: 0.9rem;
   }
 
