@@ -4,7 +4,7 @@
     'back'
     'content';
   gap: 1rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;
@@ -15,7 +15,6 @@
   display: flex;
   justify-content: flex-end;
   padding: 0 1rem;
-  margin-right: 1.2rem;
 }
 
 .detail-container,
@@ -72,6 +71,6 @@
   transition: color 0.2s ease;
 
   &:hover {
-    color: darken(#008cba, 10%);
+    color: #037aa1, 10%;
   }
 }

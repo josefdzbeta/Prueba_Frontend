@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, of } from 'rxjs';
 import { catchError, map, shareReplay, switchMap, take } from 'rxjs/operators';
-import { EventService } from '../../core/event';
+import { EventService } from '../../core/services/event';
 import { ShoppingCart } from '../../shared/components/shopping-cart/shopping-cart';
 import { SessionDetail } from '../../shared/models/session-detail.model';
 import { CartService } from '../../shared/services/cart-service';

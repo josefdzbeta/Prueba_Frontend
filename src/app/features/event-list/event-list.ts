@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { EventDetail } from '../../shared/models/event-detail.model';
-import { EventService } from '../../core/event';
+import { EventService } from '../../core/services/event';
 
 @Component({
   selector: 'app-event-list',

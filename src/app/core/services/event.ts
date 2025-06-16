@@ -2,9 +2,10 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { EventDetail } from '../shared/models/event-detail.model';
-import { SessionDetail } from '../shared/models/session-detail.model';
-import { EventInfoResponse } from '../shared/models/event-detail.model';
+import  { SessionDetail } from '../../shared/models/session-detail.model';
+import { EventDetail } from '../../shared/models/event-detail.model';
+import { EventInfoResponse } from '../../shared/models/event-detail.model';
+
 @Injectable({
   providedIn: 'root',
 })
