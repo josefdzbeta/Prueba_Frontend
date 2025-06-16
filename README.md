@@ -1,59 +1,96 @@
-# EventReservation
+# Event Reservation System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+A modern Angular application for event booking and ticket reservation, built with performance and user experience in mind.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 📅 Browse available events with details
+- 🎫 Select and manage event sessions
+- 🛒 Shopping cart functionality with local storage persistence
+- 🔍 Detailed event view with session availability
+- ⚡ Optimized performance with OnPush change detection
+
+## Technical Stack
+
+- Angular 17+
+- TypeScript
+- RxJS for reactive state management
+- Local Storage for cart persistence
+- SCSS for styling
+
+## Project Structure
+
+```
+event-reservation/
+├── src/
+│   ├── app/
+│   │   ├── core/           # Core services and utilities
+│   │   ├── features/       # Feature modules
+│   │   └── shared/         # Shared components and models
+│   ├── assets/
+│   │   └── data/          # Mock JSON data
+│   └── styles/            # Global styles
+```
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone [repository-url]
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Open your browser and navigate to `http://localhost:4200`
 
-## Code scaffolding
+## Development
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Code Organization
 
-```bash
-ng generate component component-name
-```
+- **Core Module**: Contains essential services like `EventService`
+- **Feature Modules**: Contains main features like event list and details
+- **Shared Module**: Reusable components, models, and services
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Key Components
 
-```bash
-ng generate --help
-```
+- `EventList`: Displays grid of available events
+- `EventDetail`: Shows detailed event information and session selection
+- `ShoppingCart`: Manages cart state and user selections
 
-## Building
+### Services
 
-To build the project run:
+- `EventService`: Handles event data fetching and transformation
+- `CartService`: Manages shopping cart state and persistence
 
-```bash
-ng build
-```
+## Build
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Running Tests
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Contributing
 
-For end-to-end (e2e) testing, run:
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-```bash
-ng e2e
-```
+## License
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[MIT License](LICENSE)
