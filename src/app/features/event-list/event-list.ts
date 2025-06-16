@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { EventDetail } from '../../shared/models/event-detail.model';
-import { Event as EventService } from '../../core/event';
+import { EventService } from '../../core/event';
 
 @Component({
   selector: 'app-event-list',
@@ -17,6 +17,7 @@ import { Event as EventService } from '../../core/event';
 })
 export class EventList implements OnInit {
   events$!: Observable<EventDetail[]>;
+  hasRoute = false;
   private eventService = inject(EventService);
 
   ngOnInit() {

@@ -1,53 +1,77 @@
-.detail-container {
-  display: flex;
-  flex-wrap: wrap;
+.page-layout {
+  display: grid;
+  grid-template-areas:
+    'back'
+    'content';
   gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
 
-  .sessions,
-  .cart {
-    flex: 1 1 100%;
-  }
+.button-container {
+  grid-area: back;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  margin-right: 1.2rem;
+}
+
+.detail-container,
+.error-container {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
-    .sessions,
-    .cart {
-      flex: 1 1 50%;
-    }
+    grid-template-columns: minmax(450px, 700px) minmax(280px, 350px);
+    justify-content: center;
   }
+}
+
+.sessions,
+.not-found {
+  border: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.cart-section {
+  display: grid;
+  gap: 1rem;
 }
 
 .session-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
 
-  .controls {
-    display: flex;
-    align-items: center;
-
-    button {
-      width: 2rem;
-      height: 2rem;
-      font-size: 1.2rem;
-    }
-
-    .count {
-      margin: 0 0.5rem;
-      min-width: 1.5rem;
-      text-align: center;
-    }
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
-.back-button {
-  margin-top: 1rem;
+.controls {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.not-found {
-  color: red;
-  font-weight: bold;
+// Common button styles
+.back-button,
+.button-session {
+  background: none;
+  border: none;
+  color: #008cba;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: darken(#008cba, 10%);
+  }
 }

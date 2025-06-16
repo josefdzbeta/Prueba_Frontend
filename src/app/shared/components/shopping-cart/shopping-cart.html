@@ -1,0 +1,22 @@
+<div class="cart-container">
+  @if (cartEvents$ | async; as events) { @for (cartEvent of events; track cartEvent.event.id) {
+  <div class="cart-event">
+    <h3>{{ cartEvent.event.title }}</h3>
+    @for (session of cartEvent.sessions; track session.date) {
+    <div class="cart-item">
+      <div class="item-details">
+        <span>{{ session.date | date:'dd/MM/yyyy' }}</span>
+      </div>
+      <div class="item-quantity">
+        <span>x{{ session.selected }}</span>
+        <button class="remove-button" (click)="removeFromCart(cartEvent.event.id, session)">
+          <img src="/assets/img/trash.png" alt="Remove" />
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  } } @else {
+  <p class="empty-cart">No hay entradas seleccionadas</p>
+  }
+</div>

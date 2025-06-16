@@ -1,20 +1,22 @@
+@if (!hasRoute) {
 <div class="event-list-container">
   <div class="event-grid">
     <div class="event-card" *ngFor="let event of events$ | async">
-      <a class="event-link" [routerLink]="['/event', event.id]">
+      <a class="event-link" [routerLink]="['event', event.id]">
         <h4 class="title">{{ event.title }}</h4>
         <h5 class="subtitle">{{ event.subtitle }}</h5>
         <img [src]="event.image" [alt]="event.title" />
       </a>
 
-      <!-- <p class="place">{{ event.place }}</p> -->
       <p class="dates">
         {{ event.startDate | date:'shortDate' }} – {{ event.endDate | date:'shortDate' }}
       </p>
 
       <p class="description" [innerHTML]="event.description"></p>
 
-      <button class="action-button" [routerLink]="['/event', event.id]">Comprar</button>
+      <button class="action-button" [routerLink]="['event', event.id]">Comprar</button>
     </div>
   </div>
 </div>
+}
+<router-outlet (activate)="hasRoute = true" (deactivate)="hasRoute = false"> </router-outlet>

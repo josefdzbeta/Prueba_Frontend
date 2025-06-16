@@ -1,38 +1,62 @@
-<!-- features/event-detail/event-detail.html -->
+<div class="page-layout">
+  <div class="button-container">
+    <button class="back-button" routerLink="/">Volver</button>
+  </div>
 
-@if (eventInfo$ | async; as info) {
-<h2 class="event-title">{{ info.event.title }}</h2>
-
-<div class="detail-container">
-  <!-- Sessions list -->
-  <div class="sessions">
-    @for (session of sessionsWithSelection$ | async; track session.date) {
-    <div class="session-item">
-      <div class="session-meta">
-        <p>{{ session.date | date:'short' }}</p>
-        <p>Disponibles: {{ session.availability }}</p>
+  @if (eventInfo$ | async; as info) {
+  <div class="detail-container">
+    <!-- Sessions list -->
+    <div class="sessions">
+      @for (session of sessionsWithSelection$ | async; track session.date) {
+      <div class="session-item">
+        <div class="session-meta">
+          <p>
+            Fecha: {{ session.date | date:'dd/MM/yyyy' }}, Disponibilidad: {{ session.availability
+            }}
+          </p>
+        </div>
+        <div class="controls">
+          <button
+            class="button-session"
+            (click)="decrement(session)"
+            [disabled]="session.selected <= 0"
+          >
+            –
+          </button>
+          <span class="count">{{ session.selected }}</span>
+          <button
+            class="button-session"
+            (click)="increment(session)"
+            [disabled]="session.selected >= session.availability"
+          >
+            +
+          </button>
+        </div>
       </div>
-      <div class="controls">
-        <button (click)="decrement(session)" [disabled]="session.selected <= 0">–</button>
-        <span class="count">{{ session.selected }}</span>
-        <button (click)="increment(session)" [disabled]="session.selected >= session.availability">
-          +
-        </button>
+      } @empty {
+      <p class="no-sessions">No hay sesiones disponibles.</p>
+      }
+    </div>
+
+    <!-- Shopping cart -->
+    <div class="cart-section">
+      <div class="cart">
+        <app-shopping-cart
+          [event]="info.event"
+          [items]="(cartItems$ | async) ?? []"
+          (remove)="decrement($event)"
+        ></app-shopping-cart>
       </div>
     </div>
-    } @empty {
-    <p class="no-sessions">No hay sesiones disponibles.</p>
-    }
   </div>
-
-  <!-- Shopping cart -->
-  <div class="cart">
-    <!-- <app-shopping-cart [event]="eventInfo$ | async" [items]="sessionsWithSelection$ | async || []">
-    </app-shopping-cart> -->
+  } @else {
+  <div class="error-container">
+    <p class="not-found">EVENT INFO NOT FOUND</p>
+    <div class="cart-section">
+      <div class="cart">
+        <app-shopping-cart [items]="[]" (remove)="decrement($event)"></app-shopping-cart>
+      </div>
+    </div>
   </div>
+  }
 </div>
-
-<button class="back-button" routerLink="/">Volver a cartelera</button>
-} @else {
-<p class="not-found">EVENT INFO NOT FOUND</p>
-}

@@ -8,7 +8,7 @@ import { EventInfoResponse } from '../shared/models/event-detail.model';
 @Injectable({
   providedIn: 'root',
 })
-export class Event {
+export class EventService{
   private base = 'assets/data';
 
   private http = inject(HttpClient);
