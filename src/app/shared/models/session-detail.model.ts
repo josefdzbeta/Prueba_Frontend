@@ -7,3 +7,6 @@ export interface SessionDetail{
   availability: number;
   selected?: number;
 }
+export interface SessionWithSelection extends SessionDetail {
+  selected: number;
+}
